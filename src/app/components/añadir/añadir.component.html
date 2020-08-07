@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row mt-2">
+    <div class="col text-center">
+      <h1>Añadir Experiencia</h1>
+    </div>
+    <div class="col-12">
+      <form
+        [formGroup]="this.servicios.formularioExperiencias"
+        (ngSubmit)="this.onSubmit()"
+      >
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Titulo</label>
+          <input
+            type="text"
+            class="form-control"
+            id="FormControlInput1"
+            formControlName="titulo"
+            placeholder="Escribe el titulo de la experiencia"
+          />
+          <div class="text-danger" *ngIf="this.servicios.titulo.errors">
+            Debes rellenar este campo con menos de 20 caracteres!
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="FormControlTextarea2">Descripción</label>
+          <textarea
+            class="form-control"
+            formControlName="descripcion"
+            id="FormControlTextarea2"
+            rows="3"
+          >
+          </textarea
+          >
+          <div class="text-danger" *ngIf="this.servicios.descripcion.errors">
+            Debes rellenar este campo!
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="FormControlSelect3">Sala donde lo viviste</label>
+          <select
+            formControlName="salaRef"
+            class="form-control"
+            id="FormControlSelect13"
+          >
+            <option value="music">Musica</option>
+            <option value="art">Arte</option>
+            <option value="nature">Naturaleza</option>
+            <option value="space">Espacio</option>
+            <option value="dinosaurs">Exterior</option>
+          </select>
+          <div class="text-danger" *ngIf="this.servicios.salaRef.errors">
+            Debes seleccionar una sala!
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Imagen</label>
+          <input
+            type="file"
+            formControlName="imagen"
+            accept="image/*"
+            (change)="OnFileSelected($event)"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Escoge la imagen de la experiencia"
+          />
+        </div>
+
+        <button
+          class="btn btn-primary"
+          [disabled]="!this.servicios.formularioExperiencias.valid"
+          type="submit"
+        >
+          Agregar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
